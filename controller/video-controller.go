@@ -7,16 +7,16 @@ import (
 	"log"
 )
 
-type VideoController interface {
+type VideoControllerInterface interface {
 	Save(ctx *gin.Context) entity.Video
 	FindAll() []entity.Video
 }
 
 type videoController struct {
-	videoService service.VideoService
+	videoService service.VideoServiceInterface
 }
 
-func NewVideoController(videoService service.VideoService) VideoController {
+func NewVideoController(videoService service.VideoServiceInterface) VideoControllerInterface {
 	return &videoController{
 		videoService: videoService,
 	}
